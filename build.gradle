@@ -25,7 +25,7 @@ repositories {
 }
 
 dependencies {
-    testImplementation (
+    testImplementation(
             "com.codeborne:selenide:7.3.1",
             "org.junit.jupiter:junit-jupiter:5.10.2",
             'io.qameta.allure:allure-selenide:2.27.0',
@@ -34,7 +34,29 @@ dependencies {
     runtimeOnly 'org.aspectj:aspectjweaver:1.9.22.1'
 }
 
-test {
+//test {
+//    useJUnitPlatform()
+//    systemProperties(System.getProperties())
+
+tasks.withType(Test) {
     useJUnitPlatform()
-    systemProperties(System.getProperties())
+
+    testLogging {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
+}
+
+task first_simple_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("first_simple")
+    }
+}
+
+task second_simple_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("second_simple")
+    }
 }

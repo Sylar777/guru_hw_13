@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.*;
@@ -6,6 +7,7 @@ import static pages.data.ProvidedTestData.*;
 public class PopulateFormTest extends BaseTest {
 
     @Test
+    @Tag("first_simple")
     void populateFormWithCorrectDataTest() {
         formPage.populateFirstLastName(firstName, lastName);
         formPage.setUserEmailInput(userEmail);
@@ -24,6 +26,7 @@ public class PopulateFormTest extends BaseTest {
     }
 
     @Test
+    @Tag("second_simple")
     void setFormWithOutProvidedDataTest() {
         formPage.submitForm();
 
@@ -32,6 +35,7 @@ public class PopulateFormTest extends BaseTest {
     }
 
     @Test
+    @Tag("second_simple")
     void setIncorrectDataTest() {
         formPage.populateFirstLastName(firstName, lastName);
         formPage.setGenderMale();
