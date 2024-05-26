@@ -6,15 +6,18 @@ plugins {
 group 'org.example'
 version '1.0-SNAPSHOT'
 
+def allureVersion = "2.27.0",
+    selenideVersion = "7.3.1"
+
 allure {
     report {
-        version.set("2.27.0")
+        version.set(allureVersion)
     }
     adapter { // отвечает за появление папочки build/allure-results
         aspectjWeaver.set(true) //обработка аннотации @Step
         frameworks {
             junit5 { //название фреймворка
-                adapterVersion.set("2.27.0") //версия интеграции фреймворка и Allure
+                adapterVersion.set(allureVersion) //версия интеграции фреймворка и Allure
             }
         }
     }
@@ -26,7 +29,7 @@ repositories {
 
 dependencies {
     testImplementation(
-            "com.codeborne:selenide:7.3.1",
+            "com.codeborne:selenide:$selenideVersion",
             "org.junit.jupiter:junit-jupiter:5.10.2",
             'io.qameta.allure:allure-selenide:2.27.0',
             "org.slf4j:slf4j-simple:2.0.13"
