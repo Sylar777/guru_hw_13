@@ -48,8 +48,14 @@ public class FormPage {
      */
     @Step("Remove elements from the page")
     public void removeElements() {
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('footer').remove()");
+        try {
+            executeJavaScript("$('#fixedban').remove()");
+            executeJavaScript("$('footer').remove()");
+            System.out.println("JavaScript executed successfully");
+        } catch (Exception e) {
+            System.err.println("Error executing JavaScript: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     @Step("Populate first and last name")
