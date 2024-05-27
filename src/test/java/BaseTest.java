@@ -31,7 +31,8 @@ public class BaseTest {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                 "enableVNC", true,
-                "enableVideo", true
+                "enableVideo", true,
+                "chrome_options", "--no-sandbox"
         ));
         Configuration.browserCapabilities = capabilities;
     }
