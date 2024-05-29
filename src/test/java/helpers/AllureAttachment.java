@@ -11,7 +11,6 @@ import java.nio.charset.StandardCharsets;
 
 import static com.codeborne.selenide.Selenide.sessionId;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
-import static helpers.Configurations.WDHOST;
 import static org.openqa.selenium.logging.LogType.BROWSER;
 
 public class AllureAttachment {
@@ -45,7 +44,8 @@ public class AllureAttachment {
     }
 
     public static URL getVideoUrl() {
-        String videoUrl = WDHOST + sessionId() + ".mp4";
+        var Wdhost = System.getProperty("Wdhost", "https://user1:1234@selenoid.autotests.cloud/wd/hub");
+        String videoUrl = Wdhost + sessionId() + ".mp4";
         try {
             return new URL(videoUrl);
         } catch (MalformedURLException e) {
