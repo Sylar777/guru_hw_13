@@ -37,11 +37,8 @@ dependencies {
     runtimeOnly 'org.aspectj:aspectjweaver:1.9.22.1'
 }
 
-//test {
-//    useJUnitPlatform()
-//    systemProperties(System.getProperties())
-
 tasks.withType(Test) {
+    systemProperties(System.getProperties())
     useJUnitPlatform()
 
     testLogging {
